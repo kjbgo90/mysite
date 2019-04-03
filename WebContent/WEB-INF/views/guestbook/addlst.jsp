@@ -24,8 +24,8 @@
 					if(authVo == null){
 				%>
 				<!-- 로그인 전 -->
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
+				<li><a href="/mysite/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite/user?action=joinform">회원가입</a></li>
 				<%	
 					} else {
 				%>
@@ -42,8 +42,8 @@
 	
 		<div id="navigation">
 			<ul>
-				<li><a href="">황일영</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite/main">황일영</a></li>
+				<li><a href="/mysite/guestbook?action=addlst">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
 		</div><!-- /navigation -->
@@ -57,8 +57,20 @@
 						<input type="hidden" name="action" value="insert" >
 						<table>
 							<tr>
+								<%
+									if(authVo == null){
+								%>
+								<!-- 로그인 전 -->
 								<td>이름</td>
 								<td><input type="text" name="name"></td>
+								<%
+									} else {
+								%>
+								<td>이름</td>
+								<td><input type="text" name="name" value="<%= authVo.getName() %>"></td>
+								<%
+									}
+								%>
 								<td>비밀번호</td>
 								<td><input type="password" name="pass"></td>
 							</tr>

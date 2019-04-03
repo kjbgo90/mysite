@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.javaex.vo.UserVo"%>
 
+<%
+	UserVo authVo = (UserVo)session.getAttribute("authUser");
+	String result = request.getParameter("result");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,23 +18,30 @@
 		<div id="header">
 			<h1>MySite</h1>
 			<ul>
+				<%
+					if(authVo == null){
+				%>
 				<!-- 로그인 전 -->
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
-				
+				<li><a href="/mysite/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite/user?action=joinform">회원가입</a></li>
+				<%	
+					} else {
+				%>
 				<!-- 로그인 후 -->
-				<!-- 
-				<li><a href="">회원정보수정</a></li>
-				<li><a href="">로그아웃</a></li> 
-				<li> 홍길동님 안녕하세요^^;</li>
-				-->
+				 
+				<li><a href="/mysite/user?action=modifyform">회원정보수정</a></li>
+				<li><a href="/mysite/user?action=logout">로그아웃</a></li> 
+				<li> <%= authVo.getName() %>님 안녕하세요^^;</li>
+				<%
+					}
+				%>
 			</ul>
 		</div><!-- /header -->
 	
 		<div id="navigation">
 			<ul>
-				<li><a href="">황일영</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite/main">황일영</a></li>
+				<li><a href="/mysite/guestbook?action=addlst">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
 		</div><!-- /navigation -->
@@ -51,9 +63,13 @@
 							<label class="block-label">패스워드</label> 
 							<input name="password" type="password" value="" >
 						</div>
-						
+						<%
+							if("fail".equals(result)) {
+						%>
 						<P>로그인이 실패했습니다.<br>다시입력해주세요</P>
-	
+						<%
+							}
+						%>
 						<input type="submit" value="로그인">
 					</form>
 					

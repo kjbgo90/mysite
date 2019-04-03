@@ -40,7 +40,7 @@
 	
 		<div id="navigation">
 			<ul>
-				<li><a href="">황일영</a></li>
+				<li><a href="/mysite/main">황일영</a></li>
 				<li><a href="/mysite/guestbook?action=addlst">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>

@@ -23,8 +23,8 @@
 					if(authVo == null){
 				%>
 				<!-- 로그인 전 -->
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
+				<li><a href="/mysite/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite/user?action=joinform">회원가입</a></li>
 				<%	
 					} else {
 				%>
@@ -41,8 +41,8 @@
 	
 		<div id="navigation">
 			<ul>
-				<li><a href="">황일영</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite/main">황일영</a></li>
+				<li><a href="/mysite/guestbook?action=addlst">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
 		</div><!-- /navigation -->

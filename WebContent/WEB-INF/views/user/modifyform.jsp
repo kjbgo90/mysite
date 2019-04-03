@@ -22,15 +22,15 @@
 					if(authVo == null){
 				%>
 				<!-- 로그인 전 -->
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
+				<li><a href="/mysite/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite/user?action=joinform">회원가입</a></li>
 				<%	
 					} else {
 				%>
 				<!-- 로그인 후 -->
 				
-				<li><a href="">회원정보수정</a></li>
-				<li><a href="">로그아웃</a></li> 
+				<li><a href="/mysite/user?action=modifyform">회원정보수정</a></li>
+				<li><a href="/mysite/user?action=logout">로그아웃</a></li> 
 				<li> <%= authVo.getName() %>님 안녕하세요^^;</li>
 				<%
 					}
@@ -38,10 +38,10 @@
 			</ul>
 		</div><!-- /header -->
 	
-		<div id="navigation">
+		<div id="navigation"> 
 			<ul>
-				<li><a href="">황일영</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite/main">황일영</a></li>
+				<li><a href="/mysite/guestbook?action=addlst">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
 		</div><!-- /navigation -->
@@ -56,12 +56,12 @@
 						
 						<div class="form-group">
 							<label class="block-label" for="name">이름</label>
-							<input id="name" type="text" name="name" value="" >
+							<input id="name" type="text" name="name" value="<%= authVo.getName() %>" >
 						</div>
 						
 						<div class="form-group">
 							<label class="block-label" for="email">이메일</label>
-							<p><strong>aaa@gmail.com</strong></p>
+							<p><strong><%= authVo.getEmail() %></strong></p>
 						</div>
 						<div class="form-group">
 							<label class="block-label" for="password">패스워드</label>
@@ -69,8 +69,8 @@
 						</div>
 						<fieldset>
 							<legend>성별</legend>
-							<label>여</label> <input type="radio" name="gender" value="female" >
-							<label>남</label> <input type="radio" name="gender" value="male" checked="checked">
+							<label>여</label> <input type="radio" name="gender" value="female" checked="checked">
+							<label>남</label> <input type="radio" name="gender" value="male" >
 						</fieldset>
 						
 						<input type="submit" value="수정완료">

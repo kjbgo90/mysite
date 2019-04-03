@@ -64,7 +64,7 @@ public class UserServlet extends HttpServlet {
 //			System.out.println(userVo.toString());
 			
 			if(userVo == null) {
-				WebUtil.redirect(request, response, "/mysite/user?action=loginform");
+				WebUtil.redirect(request, response, "/mysite/user?action=loginform&result=fail");
 				
 			} else {//성공시
 				HttpSession session = request.getSession(true);

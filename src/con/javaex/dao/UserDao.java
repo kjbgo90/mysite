@@ -110,6 +110,7 @@ private static UserDao instance = new UserDao();
 				loginUser = new UserVo();
 				loginUser.setNo(rs.getInt("no"));
 				loginUser.setName(rs.getString("name"));
+				loginUser.setEmail(email);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
